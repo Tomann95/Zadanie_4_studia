@@ -1,0 +1,70 @@
+﻿using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Podaj liczbę liczb parzystych do wygenerowania:");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"Wygenerowane {n} liczb parzystych (wersja 1):");
+        int iloscLosowan1 = WypiszLiczbyParzysteWersja1(n);
+
+        Console.WriteLine($"Wygenerowane {n} liczb parzystych (wersja 2):");
+        int iloscLosowan2 = WypiszLiczbyParzysteWersja2(n);
+
+        Console.WriteLine($"Ilość faktycznych losowań (wersja 1): {iloscLosowan1}");
+        Console.WriteLine($"Ilość faktycznych losowań (wersja 2): {iloscLosowan2}");
+
+        Console.ReadLine();
+    }
+
+    static int WypiszLiczbyParzysteWersja1(int n)
+    {
+        Random rand = new Random();
+        int iloscLosowan = 0;
+        int licznik = 0;
+
+        while (licznik < n)
+        {
+            int liczba = rand.Next(-8, 9);
+
+            if (liczba % 2 == 0)
+            {
+                Console.Write(liczba);
+                licznik++;
+
+                if (licznik < n)
+                    Console.Write(", ");
+            }
+
+            iloscLosowan++;
+        }
+
+        Console.WriteLine();
+        return iloscLosowan;
+    }
+
+    static int WypiszLiczbyParzysteWersja2(int n)
+    {
+        Random rand = new Random();
+        int iloscLosowan = 0;
+        int licznik = 0;
+
+        while (licznik < n)
+        {
+            int liczba = rand.Next(-4, 5) * 2;
+
+            Console.Write(liczba);
+            licznik++;
+
+            if (licznik < n)
+                Console.Write(", ");
+
+            iloscLosowan++;
+        }
+
+        Console.WriteLine();
+        return iloscLosowan;
+    }
+}
